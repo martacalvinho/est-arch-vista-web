@@ -9,11 +9,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, location, imageSrc, imageArray, index }) => {
   return (
-    <div 
-      className={`project-card group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 h-[350px] ${
-        index % 3 === 0 ? 'md:col-span-2' : 'md:col-span-1'
-      }`}
-    >
+    <div className="project-card group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 h-[400px] w-full">
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
       <img 
         src={imageSrc} 

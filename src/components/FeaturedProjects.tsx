@@ -20,7 +20,7 @@ const featuredProjects = [
 
 const FeaturedProjects = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
@@ -29,19 +29,20 @@ const FeaturedProjects = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featuredProjects.map((project, index) => (
-            <ProjectCard 
-              key={project.id}
-              title={project.title}
-              location={project.location}
-              imageSrc={project.imageSrc}
-              index={index}
-            />
+            <div key={project.id} className="h-full">
+              <ProjectCard 
+                title={project.title}
+                location={project.location}
+                imageSrc={project.imageSrc}
+                index={index}
+              />
+            </div>
           ))}
         </div>
         
-        <div className="text-center mt-10">
+        <div className="text-center mt-12">
           <Link 
             to="/projects" 
             className="inline-block bg-archiest-blue text-white font-medium px-6 py-3 rounded hover:bg-archiest-darkblue transition-colors"
