@@ -33,6 +33,7 @@ const Footer = () => {
               <li className="text-gray-400">BIM Consulting</li>
               <li className="text-gray-400">Sustainable Projects</li>
               <li className="text-gray-400">Interior Design</li>
+              <li className="text-gray-400">Project Management</li>
             </ul>
           </div>
           
@@ -49,7 +50,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 h-5 w-5 text-archiest-lightblue" />
-                <span className="text-gray-400">+372 5000 0000</span>
+                <span className="text-gray-400">+351 912 010 201</span>
               </li>
             </ul>
           </div>

@@ -3,10 +3,11 @@ interface ProjectCardProps {
   title: string;
   location: string;
   imageSrc: string;
+  imageArray?: string[];
   index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, location, imageSrc, index }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, location, imageSrc, imageArray, index }) => {
   return (
     <div 
       className={`project-card group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 h-[350px] ${

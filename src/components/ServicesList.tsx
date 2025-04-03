@@ -1,5 +1,5 @@
 
-import { Building, Building2, Lightbulb, Home, PenTool } from 'lucide-react';
+import { Building, Building2, Lightbulb, Home, PenTool, Briefcase } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 
 const services = [
@@ -32,6 +32,12 @@ const services = [
     title: 'Interior Design',
     description: 'Comprehensive interior solutions that transform spaces with thoughtful layouts, custom furniture, material selection, and lighting design.',
     icon: <PenTool size={32} />
+  },
+  {
+    id: 6,
+    title: 'Project Management',
+    description: 'Complete oversight of your project from concept to completion, ensuring quality, budget control, and timely delivery.',
+    icon: <Briefcase size={32} />
   }
 ];
 

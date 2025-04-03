@@ -1,6 +1,5 @@
 
 import { Mail, Phone, MapPin } from 'lucide-react';
-import ContactForm from '@/components/ContactForm';
 
 const Contact = () => {
   return (
@@ -21,60 +20,54 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Contact Info */}
-            <div className="lg:col-span-1">
-              <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-              <p className="text-gray-600 mb-8">
-                We'd love to hear from you. Contact us using the form or reach out directly through the following channels:
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <MapPin className="w-6 h-6 text-archiest-blue mr-4 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Office Location</h3>
-                    <p className="text-gray-600">
-                      Tallinn, Estonia
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Mail className="w-6 h-6 text-archiest-blue mr-4 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Email Address</h3>
-                    <a href="mailto:info@archiest.eu" className="text-archiest-blue hover:underline">
-                      info@archiest.eu
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Phone className="w-6 h-6 text-archiest-blue mr-4 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-gray-800 mb-1">Phone Number</h3>
-                    <p className="text-gray-600">
-                      +372 5000 0000
-                    </p>
-                  </div>
-                </div>
+          <div className="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-lg">
+            <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
+            <p className="text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+              We'd love to hear from you. Reach out directly through the following channels:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-lg">
+                <MapPin className="w-10 h-10 text-archiest-blue mb-4" />
+                <h3 className="font-semibold text-gray-800 mb-2 text-lg">Office Location</h3>
+                <p className="text-gray-600">
+                  Tallinn, Estonia
+                </p>
               </div>
               
-              <div className="mt-12">
-                <h3 className="font-semibold text-gray-800 mb-4">Working Hours</h3>
-                <div className="space-y-2 text-gray-600">
-                  <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p>Saturday: By appointment only</p>
-                  <p>Sunday: Closed</p>
-                </div>
+              <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-lg">
+                <Mail className="w-10 h-10 text-archiest-blue mb-4" />
+                <h3 className="font-semibold text-gray-800 mb-2 text-lg">Email Address</h3>
+                <a href="mailto:info@archiest.eu" className="text-archiest-blue hover:underline">
+                  info@archiest.eu
+                </a>
+              </div>
+              
+              <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-lg">
+                <Phone className="w-10 h-10 text-archiest-blue mb-4" />
+                <h3 className="font-semibold text-gray-800 mb-2 text-lg">Phone Number</h3>
+                <p className="text-gray-600">
+                  +351 912 010 201
+                </p>
               </div>
             </div>
             
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-              <ContactForm />
+            <div className="mt-16">
+              <h3 className="font-semibold text-gray-800 mb-4 text-center text-xl">Working Hours</h3>
+              <div className="flex justify-center space-x-8">
+                <div className="text-center">
+                  <p className="font-medium text-archiest-blue mb-2">Monday - Friday</p>
+                  <p className="text-gray-600">9:00 AM - 6:00 PM</p>
+                </div>
+                <div className="text-center">
+                  <p className="font-medium text-archiest-blue mb-2">Saturday</p>
+                  <p className="text-gray-600">By appointment only</p>
+                </div>
+                <div className="text-center">
+                  <p className="font-medium text-archiest-blue mb-2">Sunday</p>
+                  <p className="text-gray-600">Closed</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

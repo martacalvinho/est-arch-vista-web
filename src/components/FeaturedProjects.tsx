@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
 
-// Project data
+// Project data - only 2 projects as requested
 const featuredProjects = [
   {
     id: 1,
@@ -15,24 +15,6 @@ const featuredProjects = [
     title: 'Masterplan Guincho',
     location: 'Lisbon, Portugal',
     imageSrc: '/lovable-uploads/19d73f25-4d8e-4971-8904-9c68e38b4435.png'
-  },
-  {
-    id: 3,
-    title: 'Restaurant Republica 51',
-    location: 'Lisbon, Portugal',
-    imageSrc: '/lovable-uploads/2a933528-c9ae-4c98-8c8a-1f0cafcdc903.png'
-  },
-  {
-    id: 4,
-    title: 'American School of Lisbon',
-    location: 'Lisbon, Portugal',
-    imageSrc: '/lovable-uploads/546def6a-a606-4a2d-bc3e-e389e2d53adb.png'
-  },
-  {
-    id: 5,
-    title: 'Nisa Boutique Hotel',
-    location: 'Nisa, Portugal',
-    imageSrc: '/lovable-uploads/afeaa000-1164-4b46-84b6-23579755b0e9.png'
   }
 ];
 
@@ -47,7 +29,7 @@ const FeaturedProjects = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {featuredProjects.map((project, index) => (
             <ProjectCard 
               key={project.id}
