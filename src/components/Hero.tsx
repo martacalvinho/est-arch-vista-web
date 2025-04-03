@@ -1,24 +1,31 @@
 
 import { Link } from 'react-router-dom';
+import { Waves } from '@/components/ui/waves';
 
 const Hero = () => {
   return (
-    <div className="relative h-screen">
-      {/* Background image with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ 
-          backgroundImage: "url('/lovable-uploads/7f547a28-56ce-49f3-a526-e3af18854e9c.png')",
-          backgroundPosition: "center center", 
-          backgroundRepeat: "no-repeat", 
-          backgroundSize: "cover"
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
-      </div>
+    <div className="relative h-screen overflow-hidden bg-zinc-900">
+      {/* Interactive background with Waves */}
+      <Waves 
+        lineColor="rgba(255, 255, 255, 0.15)"
+        backgroundColor="transparent"
+        waveSpeedX={0.018}
+        waveSpeedY={0.008}
+        waveAmpX={40}
+        waveAmpY={25}
+        friction={0.92}
+        tension={0.008}
+        maxCursorMove={120}
+        xGap={18}
+        yGap={40}
+        className="z-0"
+      />
+      
+      {/* Dark overlay for better text visibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-archiest-darkblue/80 via-black/60 to-black/40 z-10"></div>
       
       {/* Hero content */}
-      <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
+      <div className="relative container mx-auto px-4 h-full flex flex-col justify-center z-20">
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
             Crafting Timeless Architectural Experiences
@@ -44,7 +51,7 @@ const Hero = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <svg 
           className="w-6 h-6 text-white" 
           xmlns="http://www.w3.org/2000/svg" 
