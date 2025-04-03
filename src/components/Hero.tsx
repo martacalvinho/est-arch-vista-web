@@ -14,29 +14,28 @@ const Hero = () => {
           backgroundSize: "cover"
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-archiest-darkblue/30"></div>
       </div>
       
       {/* Hero content */}
       <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
         <div className="max-w-3xl animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
-            Crafting Timeless Spaces, Designed for Impact
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight">
+            Crafting Timeless Architectural Experiences
           </h1>
-          <p className="text-xl text-gray-200 mb-8">
-            ArchiEst is an innovative architecture studio based in Estonia, 
-            delivering exceptional architectural solutions with global expertise.
+          <p className="text-xl md:text-2xl text-white mb-10 leading-relaxed">
+            ArchiEst transforms visions into exceptional spaces that inspire, function beautifully, and stand the test of time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
               to="/projects" 
-              className="bg-archiest-blue text-white font-medium px-6 py-3 rounded hover:bg-archiest-darkblue transition-colors inline-block text-center"
+              className="bg-archiest-blue text-white font-medium px-8 py-4 rounded-lg hover:bg-archiest-darkblue transition-colors inline-block text-center text-lg"
             >
               Our Projects
             </Link>
             <Link 
               to="/contact" 
-              className="bg-transparent border-2 border-white text-white font-medium px-6 py-3 rounded hover:bg-white hover:text-archiest-blue transition-colors inline-block text-center"
+              className="bg-transparent border-2 border-white text-white font-medium px-8 py-4 rounded-lg hover:bg-white/20 transition-colors inline-block text-center text-lg"
             >
               Get in Touch
             </Link>

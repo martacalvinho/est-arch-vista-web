@@ -1,50 +1,56 @@
 
+import { Award, Users, Compass, Globe } from 'lucide-react';
+
 const AboutSection = () => {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center gap-10">
-          <div className="w-full md:w-1/2 mb-10 md:mb-0">
-            <img 
-              src="/lovable-uploads/e4fdaa34-a77c-4c8e-aa0b-c4f1f5dd0cd2.png" 
-              alt="Design Blueprint with Building" 
-              className="rounded-lg shadow-xl w-full"
-            />
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">About ArchiEst</h2>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Founded by Paulo Calvinho, ArchiEst is a boutique architecture studio that combines global expertise with local insight.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="bg-gray-50 p-8 rounded-lg border border-gray-100 hover:shadow-lg transition-shadow">
+            <Award className="text-archiest-blue w-12 h-12 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Experience</h3>
+            <p className="text-gray-700">
+              Over 30 years shaping architecture, with successful projects across Portugal, the Middle East, South America and Africa.
+            </p>
           </div>
           
-          <div className="w-full md:w-1/2">
-            <h2 className="text-3xl font-bold mb-6">About ArchiEst</h2>
-            
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Experience</h3>
-                <p className="text-gray-700">
-                  Over 30 years shaping architecture, with successful projects across Portugal, the Middle East, South America and Africa.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Credentials</h3>
-                <p className="text-gray-700">
-                  Certified by the Order of Architects of Portugal (No. 3159), RIBA UK (No. 20015078), and ARB (No. 085479D), bringing global expertise to every design.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Approach</h3>
-                <p className="text-gray-700">
-                  Thoughtful, sustainable, and deeply connected to cultural context, always in close collaboration with clients.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Impact</h3>
-                <p className="text-gray-700">
-                  More than just functional spaces—each project enriches its surroundings, creating lasting value for both people and places.
-                </p>
-              </div>
-            </div>
+          <div className="bg-gray-50 p-8 rounded-lg border border-gray-100 hover:shadow-lg transition-shadow">
+            <Users className="text-archiest-blue w-12 h-12 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Credentials</h3>
+            <p className="text-gray-700">
+              Certified by the Order of Architects of Portugal (No. 3159), RIBA UK (No. 20015078), and ARB (No. 085479D).
+            </p>
           </div>
+          
+          <div className="bg-gray-50 p-8 rounded-lg border border-gray-100 hover:shadow-lg transition-shadow">
+            <Compass className="text-archiest-blue w-12 h-12 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Approach</h3>
+            <p className="text-gray-700">
+              Thoughtful, sustainable, and deeply connected to cultural context, always in close collaboration with clients.
+            </p>
+          </div>
+          
+          <div className="bg-gray-50 p-8 rounded-lg border border-gray-100 hover:shadow-lg transition-shadow">
+            <Globe className="text-archiest-blue w-12 h-12 mb-4" />
+            <h3 className="text-xl font-bold mb-2">Impact</h3>
+            <p className="text-gray-700">
+              More than just functional spaces—each project enriches its surroundings, creating lasting value for both people and places.
+            </p>
+          </div>
+        </div>
+        
+        <div className="max-w-3xl mx-auto text-center">
+          <blockquote className="text-xl text-gray-700 italic mb-6">
+            "Architecture is not just about creating buildings; it's about crafting experiences and environments that enhance lives and communities."
+          </blockquote>
+          <p className="font-bold text-archiest-blue">— Paulo Calvinho, Founder</p>
         </div>
       </div>
     </section>

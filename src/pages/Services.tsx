@@ -1,6 +1,7 @@
-
 import { Building, Building2, Lightbulb, Home, PenTool, RefreshCw, Compass, Zap, Database, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ServiceCard from '@/components/services/ServiceCard';
+import ProcessStep from '@/components/services/ProcessStep';
 
 // Service categories
 const services = [
@@ -136,6 +137,30 @@ const services = [
   }
 ];
 
+// Process steps
+const processSteps = [
+  {
+    number: 1,
+    title: "Discovery",
+    description: "We begin by understanding your vision, requirements, and constraints through in-depth consultation."
+  },
+  {
+    number: 2,
+    title: "Concept Design",
+    description: "We develop initial design concepts that align with your goals and respond to site conditions."
+  },
+  {
+    number: 3,
+    title: "Development",
+    description: "The chosen concept evolves into detailed drawings with materials, systems, and specifications."
+  },
+  {
+    number: 4,
+    title: "Realization",
+    description: "We oversee construction to ensure the design is executed according to specifications and standards."
+  }
+];
+
 const Services = () => {
   return (
     <div className="pt-20">
@@ -164,27 +189,13 @@ const Services = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {services.map(service => (
-              <div key={service.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="p-8">
-                  <div className="bg-archiest-blue/10 p-4 rounded-full inline-flex mb-6">
-                    <span className="text-archiest-blue">{service.icon}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
-                  
-                  <h4 className="font-semibold text-archiest-blue mb-4">Key Features:</h4>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <svg className="w-5 h-5 text-archiest-blue mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              <ServiceCard 
+                key={service.id}
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                features={service.features}
+              />
             ))}
           </div>
         </div>
@@ -201,29 +212,14 @@ const Services = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="w-12 h-12 rounded-full bg-archiest-blue text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
-              <h3 className="text-xl font-bold mb-3">Discovery</h3>
-              <p className="text-gray-600">We begin by understanding your vision, requirements, and constraints through in-depth consultation.</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="w-12 h-12 rounded-full bg-archiest-blue text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
-              <h3 className="text-xl font-bold mb-3">Concept Design</h3>
-              <p className="text-gray-600">We develop initial design concepts that align with your goals and respond to site conditions.</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="w-12 h-12 rounded-full bg-archiest-blue text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
-              <h3 className="text-xl font-bold mb-3">Development</h3>
-              <p className="text-gray-600">The chosen concept evolves into detailed drawings with materials, systems, and specifications.</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow text-center">
-              <div className="w-12 h-12 rounded-full bg-archiest-blue text-white flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
-              <h3 className="text-xl font-bold mb-3">Realization</h3>
-              <p className="text-gray-600">We oversee construction to ensure the design is executed according to specifications and standards.</p>
-            </div>
+            {processSteps.map(step => (
+              <ProcessStep 
+                key={step.number}
+                number={step.number}
+                title={step.title}
+                description={step.description}
+              />
+            ))}
           </div>
         </div>
       </section>

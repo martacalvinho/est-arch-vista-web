@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import AboutSection from '@/components/AboutSection';
 import FeaturedProjects from '@/components/FeaturedProjects';
 import ServicesList from '@/components/ServicesList';
-import TestimonialSection from '@/components/TestimonialSection';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -13,7 +12,6 @@ const Index = () => {
       <AboutSection />
       <FeaturedProjects />
       <ServicesList />
-      <TestimonialSection />
       
       {/* Call to Action */}
       <section className="py-20 bg-gray-100">

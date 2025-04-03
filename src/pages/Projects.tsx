@@ -1,8 +1,6 @@
-
 import { useState } from 'react';
-
-// Project categories
-const categories = ["All", "Residential", "Commercial", "Educational", "Hospitality", "Industrial"];
+import ProjectGallery from '@/components/projects/ProjectGallery';
+import ProjectDetail from '@/components/projects/ProjectDetail';
 
 // Project data
 const projects = [
@@ -126,39 +124,16 @@ const projects = [
 ];
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<null | typeof projects[0]>(null);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-  const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
 
   const openProjectDetails = (project: typeof projects[0]) => {
     setSelectedProject(project);
-    setActiveImageIndex(0);
     document.body.style.overflow = 'hidden';
   };
 
   const closeProjectDetails = () => {
     setSelectedProject(null);
     document.body.style.overflow = 'auto';
-  };
-
-  const nextImage = () => {
-    if (selectedProject?.imageGallery) {
-      setActiveImageIndex((prevIndex) => 
-        prevIndex === selectedProject.imageGallery!.length - 1 ? 0 : prevIndex + 1
-      );
-    }
-  };
-
-  const prevImage = () => {
-    if (selectedProject?.imageGallery) {
-      setActiveImageIndex((prevIndex) => 
-        prevIndex === 0 ? selectedProject.imageGallery!.length - 1 : prevIndex - 1
-      );
-    }
   };
 
   return (
@@ -179,134 +154,19 @@ const Projects = () => {
       {/* Projects Gallery */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center mb-12 gap-2">
-            {categories.map(category => (
-              <button
-                key={category}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeCategory === category 
-                    ? 'bg-archiest-blue text-white' 
-                    : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-                }`}
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-          
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map(project => (
-              <div 
-                key={project.id} 
-                className="project-card group relative cursor-pointer overflow-hidden rounded-lg shadow-lg h-[350px]"
-                onClick={() => openProjectDetails(project)}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
-                <img 
-                  src={project.imageSrc} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                  <span className="inline-block px-3 py-1 text-xs font-semibold bg-archiest-blue text-white rounded-full mb-2">
-                    {project.category}
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
-                  <p className="text-gray-300">{project.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectGallery 
+            projects={projects}
+            onProjectClick={openProjectDetails}
+          />
         </div>
       </section>
       
       {/* Project Details Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="relative">
-              {/* Main image display */}
-              <div className="relative h-[400px] md:h-[500px] overflow-hidden">
-                <img 
-                  src={selectedProject.imageGallery && selectedProject.imageGallery.length > 0 
-                    ? selectedProject.imageGallery[activeImageIndex] 
-                    : selectedProject.imageSrc} 
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Navigation arrows - only show if there are multiple images */}
-                {selectedProject.imageGallery && selectedProject.imageGallery.length > 1 && (
-                  <>
-                    <button 
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full hover:bg-white transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        prevImage();
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                    
-                    <button 
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full hover:bg-white transition-colors"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        nextImage();
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </>
-                )}
-              </div>
-              
-              {/* Thumbnail gallery */}
-              {selectedProject.imageGallery && selectedProject.imageGallery.length > 1 && (
-                <div className="flex gap-2 p-2 overflow-x-auto bg-gray-100">
-                  {selectedProject.imageGallery.map((img, idx) => (
-                    <div 
-                      key={idx}
-                      className={`h-16 w-24 flex-shrink-0 cursor-pointer border-2 ${activeImageIndex === idx ? 'border-archiest-blue' : 'border-transparent'}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveImageIndex(idx);
-                      }}
-                    >
-                      <img src={img} alt={`Thumbnail ${idx + 1}`} className="h-full w-full object-cover" />
-                    </div>
-                  ))}
-                </div>
-              )}
-              
-              <button 
-                className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
-                onClick={closeProjectDetails}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-            
-            <div className="p-6">
-              <span className="inline-block px-3 py-1 text-xs font-semibold bg-archiest-blue text-white rounded-full mb-2">
-                {selectedProject.category}
-              </span>
-              <h2 className="text-2xl font-bold mb-2">{selectedProject.title}</h2>
-              <p className="text-gray-600 mb-4">{selectedProject.location}</p>
-              <p className="text-gray-700">{selectedProject.description}</p>
-            </div>
-          </div>
-        </div>
+        <ProjectDetail 
+          project={selectedProject}
+          onClose={closeProjectDetails}
+        />
       )}
     </div>
   );
