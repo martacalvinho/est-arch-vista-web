@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <h3 className="text-xl font-bold mb-4 text-white">ArchiEst</h3>
             <p className="text-gray-400 mb-4">
-              Transforming spaces with innovative architectural design since 2020. Based in Estonia with global expertise.
+              Transforming spaces with innovative architectural design. Based in Estonia with global expertise.
             </p>
           </div>
           
