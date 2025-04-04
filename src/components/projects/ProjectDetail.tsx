@@ -1,5 +1,6 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getProjectImagesWithFallback } from '@/lib/imageUtils';
 
 interface Project {
   id: number;
@@ -7,6 +8,7 @@ interface Project {
   location: string;
   category: string;
   imageSrc: string;
+  projectFolder?: string;
   imageGallery?: string[];
   description: string;
 }
@@ -18,19 +20,27 @@ interface ProjectDetailProps {
 
 const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [projectImages, setProjectImages] = useState<string[]>([]);
+  
+  // Load images from the project folder on component mount
+  useEffect(() => {
+    // Get images from the project folder, with fallback to the provided imageGallery
+    const images = getProjectImagesWithFallback(project.id, project.imageGallery);
+    setProjectImages(images);
+  }, [project]);
 
   const nextImage = () => {
-    if (project.imageGallery) {
+    if (projectImages.length > 0) {
       setActiveImageIndex((prevIndex) => 
-        prevIndex === project.imageGallery!.length - 1 ? 0 : prevIndex + 1
+        prevIndex === projectImages.length - 1 ? 0 : prevIndex + 1
       );
     }
   };
 
   const prevImage = () => {
-    if (project.imageGallery) {
+    if (projectImages.length > 0) {
       setActiveImageIndex((prevIndex) => 
-        prevIndex === 0 ? project.imageGallery!.length - 1 : prevIndex - 1
+        prevIndex === 0 ? projectImages.length - 1 : prevIndex - 1
       );
     }
   };
@@ -42,15 +52,15 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
           {/* Main image display */}
           <div className="relative h-[400px] md:h-[500px] overflow-hidden">
             <img 
-              src={project.imageGallery && project.imageGallery.length > 0 
-                ? project.imageGallery[activeImageIndex] 
+              src={projectImages.length > 0 
+                ? projectImages[activeImageIndex] 
                 : project.imageSrc} 
               alt={project.title}
               className="w-full h-full object-cover"
             />
             
             {/* Navigation arrows - only show if there are multiple images */}
-            {project.imageGallery && project.imageGallery.length > 1 && (
+            {projectImages.length > 1 && (
               <>
                 <button 
                   className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full hover:bg-white transition-colors"
@@ -80,9 +90,9 @@ const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
           </div>
           
           {/* Thumbnail gallery */}
-          {project.imageGallery && project.imageGallery.length > 1 && (
+          {projectImages.length > 1 && (
             <div className="flex gap-2 p-2 overflow-x-auto bg-gray-100">
-              {project.imageGallery.map((img, idx) => (
+              {projectImages.map((img, idx) => (
                 <div 
                   key={idx}
                   className={`h-16 w-24 flex-shrink-0 cursor-pointer border-2 ${activeImageIndex === idx ? 'border-archiest-blue' : 'border-transparent'}`}

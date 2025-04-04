@@ -1,6 +1,8 @@
 
 import { Link } from 'react-router-dom';
 import ProjectCard from './ProjectCard';
+import ProjectDetail from './projects/ProjectDetail';
+import { useState } from 'react';
 
 // Project data - only 2 projects as requested
 const featuredProjects = [
@@ -8,17 +10,36 @@ const featuredProjects = [
     id: 1,
     title: 'Luxury Apartments',
     location: 'Lisbon, Portugal',
-    imageSrc: '/lovable-uploads/024ac5c7-ac59-48b9-bdbd-11381d4a4073.png'
+    category: 'Residential',
+    imageSrc: '/projects/project1/Exterior Sunset- 24 de Julho.jpg',
+    imageGallery: [
+      '/projects/project1/Apt- Living Room.jpg',
+      '/projects/project1/Apt- Outdoor 2.jpg',
+      '/projects/project1/Apt- Room.jpg',
+      '/projects/project1/Exterior Closer - 24 de Julho.jpg',
+      '/projects/project1/Exterior Sunset- 24 de Julho.jpg'
+    ],
+    description: 'High-end residential development featuring elegant interiors and panoramic city views.'
   },
   {
     id: 2,
     title: 'Masterplan Guincho',
     location: 'Lisbon, Portugal',
-    imageSrc: '/lovable-uploads/19d73f25-4d8e-4971-8904-9c68e38b4435.png'
+    category: 'Residential',
+    imageSrc: '/projects/project2/Marinha Guincho 03.jpg',
+    imageGallery: [
+      '/projects/project2/Marinha Guincho 01.jpg',
+      '/projects/project2/Marinha Guincho 02.jpg',
+      '/projects/project2/Marinha Guincho 03.jpg',
+      '/projects/project2/Marinha Guincho 04.jpg',
+      '/projects/project2/Marinha Guincho 05.jpg'
+    ],
+    description: 'Comprehensive residential development with integrated amenities and natural landscape design.'
   }
 ];
 
 const FeaturedProjects = () => {
+  const [selectedProject, setSelectedProject] = useState<typeof featuredProjects[0] | null>(null);
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -37,6 +58,7 @@ const FeaturedProjects = () => {
                 location={project.location}
                 imageSrc={project.imageSrc}
                 index={index}
+                onClick={() => setSelectedProject(project)}
               />
             </div>
           ))}
@@ -51,6 +73,13 @@ const FeaturedProjects = () => {
           </Link>
         </div>
       </div>
+
+      {selectedProject && (
+        <ProjectDetail
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </section>
   );
 };

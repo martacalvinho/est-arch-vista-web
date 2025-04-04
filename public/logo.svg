@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .fill {
+      fill: white
+    }
+    .cut {
+      fill: #1a1a1a;;
+    }
+  </style>
+  <!-- Stylized "A" logo with geometric precision and three-slab design -->
+  <!-- Left leg -->
+  <polygon points="30,80 50,10 50,80" class="fill"/>
+  <!-- Right leg -->
+  <polygon points="70,80 50,10 50,80" class="fill"/>
+  <!-- Crossbar (negative space) -->
+  <rect x="45" y="45" width="10" height="10" class="cut"/>
+</svg>

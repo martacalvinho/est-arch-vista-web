@@ -71,17 +71,17 @@ const About = () => {
       {/* Founder Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/3">
+          <h2 className="text-3xl font-bold mb-8">Meet Our Founder</h2>
+          <div className="flex flex-col md:flex-row gap-12">
+            <div className="w-full md:w-1/4 md:mt-1">
               <img 
-                src="/lovable-uploads/00bb734b-7368-4e4c-a2da-06ad8c2dca24.png" 
+                src="/founder.jpg" 
                 alt="Paulo Calvinho" 
-                className="rounded-lg shadow-lg w-full"
+                className="rounded-lg shadow-lg w-full object-cover max-h-[400px]"
               />
             </div>
             
-            <div className="w-full md:w-2/3">
-              <h2 className="text-3xl font-bold mb-6">Meet Our Founder</h2>
+            <div className="w-full md:w-3/4">
               <h3 className="text-xl font-semibold mb-4">Paulo Calvinho</h3>
               <p className="text-gray-700 mb-6">
                 With a distinguished career spanning over three decades, Paulo Calvinho has established himself as a visionary in the architectural world. His work transcends borders, with award-winning projects across four continents that demonstrate his versatility and deep understanding of diverse cultural contexts.
